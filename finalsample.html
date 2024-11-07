@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern DOM Example with Animation</title>
+  <style>
+    /* Reset default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('image2.jpg');
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      transition: background 1s ease;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+      transition: background-color 0.5s ease;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+      transition: color 0.5s ease;
+    }
+
+    .image-section img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #23272a;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, #00f260, #0575e6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn:hover::after {
+      opacity: 1;
+    }
+
+    .btn:focus {
+      outline: none;
+    }
+
+    .btn span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn:hover {
+      background-color: #1a1d21;
+    }
+
+    /* Moving animation on click */
+    .btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    #result {
+      margin-top: 20px;
+      color: #333;
+      font-size: 18px;
+      transition: color 0.5s ease;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 20px;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 id="main-title">DOM</h1>
+
+    <div class="image-section">
+      <img id="main-img" src="image2.jpg" alt="Placeholder Image">
+    </div>
+
+    <button id="changeContent" class="btn">
+      <span>Click Here!</span>
+    </button>
+    
+    <p id="result">Click the button!</p>
+  </div>
+
+  <script>
+    // Example 1: Selecting and Modifying DOM Elements
+    const titleElement = document.getElementById('main-title');
+    const imageElement = document.getElementById('main-img');
+    const resultElement = document.getElementById('result');
+    const bodyElement = document.body;
+    const containerElement = document.querySelector('.container');
+
+    // Example 2: Event Listeners and Event Handling
+    document.getElementById('changeContent').addEventListener('click', function() {
+      // Modify the title text
+      titleElement.textContent = 'Hello World! I am Froggie!';
+
+      // Change the image source
+      imageElement.src = 'image5.gif';
+
+      // Update the result text
+      resultElement.textContent = 'I love World Peace!';
+
+      // Change the background image of the body
+      bodyElement.style.backgroundImage = 'url("image4.gif")';
+      
+      // Change the container background to semi-transparent
+      containerElement.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+
+      // Change text colors to fit the new background
+      titleElement.style.color = '#FFFFFF';
+      resultElement.style.color = '#FFFFFF';
+    });
+  </script>
+
+</body>
+</html>
